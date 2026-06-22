@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        HTML & CSS - Calculator Assessment
+    </title>
+    <style>
+        body {
+            background-color: rgb(181, 177, 243);
+            position: relative;
+            width: 98%;
+            height: 97vh;
+        }
+
+        .calc {
+            width: 400px;
+            height: 425px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgb(223, 248, 223);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .top {
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+            height: 4vh;
+
+            input {
+                display: block;
+                width: 98%;
+                height: 100%;
+            }
+        }
+
+        .row {
+            width: inherit;
+            height: 8vh;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .clacbtns {
+            height: 95%;
+        }
+
+        button {
+            width: 46%;
+            height: inherit;
+            font-weight: bold;
+            border: none;
+            border-radius: 13px;
+            background-color: #e2d8f2;
+            color: #060440;
+            font-family: sans-serif;
+            font-size: large;
+
+            &.btn-left {
+                margin-right: 3px;
+            }
+
+            &.btn-right {
+                margin-left: 3px;
+            }
+
+        }
+
+        .col-float-left {
+            float: left;
+            width: 50%;
+            height: 8vh;
+        }
+
+        .col-float-right {
+            float: right;
+            width: 50%;
+            height: 8vh;
+            
+            .btn-left {
+                margin-left: 5px;
+            }
+        }
+
+        input[type="text"] {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calc">
+        <div class="top">
+            <input type="text" id="calcAns" name="calcAns" disabled>
+        </div>
+        <div class="clacbtns">
+            <div class="row">
+                <div class="col-float-left">
+                    <button class="btn-left">%</button>
+                    <button class="btn-right">CE</button>
+                </div>
+                <div class="col-float-right">
+                    <button class="btn-left">C</button>
+                    <button class="btn-right">Back</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-float-left">
+                    <button class="btn-left">7</button>
+                    <button class="btn-right">8</button>
+                </div>
+                <div class="col-float-right">
+                    <button class="btn-left">9</button>
+                    <button class="btn-right">&divide;</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-float-left">
+                    <button class="btn-left">4</button>
+                    <button class="btn-right">5</button>
+                </div>
+                <div class="col-float-right">
+                    <button class="btn-left">6</button>
+                    <button class="btn-right">x</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-float-left">
+                    <button class="btn-left">1</button>
+                    <button class="btn-right">2</button>
+                </div>
+                <div class="col-float-right">
+                    <button class="btn-left">3</button>
+                    <button class="btn-right">-</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-float-left">
+                    <button class="btn-left"><sup>+</sup>/<sub>-</sub></button>
+                    <button class="btn-right">0</button>
+                </div>
+                <div class="col-float-right">
+                    <button class="btn-left">.</button>
+                    <button class="btn-right">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn-left" style="width: 48%;">=</button>
+                <button class="btn-right" style="width: 48%;">Enter</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
