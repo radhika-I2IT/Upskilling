@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>I2I-Pledge2Propel</title>
+    <link rel="stylesheet" href="pledge2propel_source/css/homepage.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        body {
+            font-family: Poppins;
+            font-size: 16px;
+            margin: 8px 0px;
+        }
+
+        .font-12-size {
+            font-size: 12px;
+        }
+
+        .font-13-size {
+            font-size: 13px;
+        }
+
+        .font-14-size {
+            font-size: 14px;
+        }
+
+        .font-15-size {
+            font-size: 15px;
+        }
+
+        .div-full {
+            height: auto;
+            padding: 0px 50px;
+            background-image: url(pledge2propel_source/image/header-background-img.png);
+            background-repeat: no-repeat;
+        }
+
+        .page-header-panel {
+            width: 1150px;
+            height: inherit;
+            margin: 0 auto;
+            width: 1150px;
+        }
+
+        body::before {
+            content: " ";
+            border-top: 5px solid #00249C;
+            display: block;
+        }
+
+        header {
+            margin-top: 20px;
+            height: auto;
+            display: flex;
+            font-family: inter;
+            justify-content: space-between;
+
+
+            img {
+                width: 325px;
+                height: 65px;
+            }
+
+            nav {
+                padding: 23px 0px;
+                width: 330px;
+                display: flex;
+                gap: 2px;
+
+                a {
+                    text-decoration: none;
+                    color: #233E8B;
+                    font-size: 16px;
+                    font-weight: 700;
+                    margin-left: auto;
+                }
+            }
+        }
+
+        .home-content {
+            display: flex;
+            justify-content: center;
+            width: 68%;
+            height: auto;
+            font-family: Poppins;
+            border: 1px solid black;
+            margin: auto;
+
+            .center-content {
+                width: 746px;
+                padding: 40px 80px;
+            }
+
+            .title-content {
+                height: 123px;
+                width: 586px;
+                font-weight: 700;
+                font-size: 36px;
+                margin: 5px 15px;
+                line-height: 40px;
+                text-align: center;
+
+                span:first-child {
+                    color: #00249c;
+                }
+
+                span:last-child {
+                    color: #00b92b;
+                }
+            }
+
+            .title-desc {
+                p:first-child {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .mid-letus {
+            margin: 60px 0;
+            display: flex;
+            flex-direction: row;
+            height: 124px;
+            justify-content: space-between;
+
+            div {
+                width: 560px;
+                height: inherit;
+                border: 1px solid salmon;
+                align-items: center;
+            }
+        }
+
+        .partner-with-pledge2propel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+            margin: 10px 0px;
+            padding: 0px 50px;
+
+            .div-pwp-row-2{
+                margin: 10px 0px;
+            }
+
+            .div-pwp-row-1 {
+                font-size: x-large;
+                font-weight: bold;
+
+                .pwp-span-navy {
+                    color: #00249c;
+                }
+
+                .pwp-span-green {
+                    color: #00b92b;
+                }
+            }
+
+            .div-pwp-col {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+            }
+            .div-pwp-col-2{
+                text-align: center;
+                img{
+                    width: 400px;
+                    height: 400px;                    
+                }
+            }
+
+        }
+
+        .our-partners {
+            background-color: #EDF6FF;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0px;
+
+            h2 {
+                font-size: x-large;
+                margin: 10px;
+            }
+
+            .op-center {
+                margin: 20px 0px;
+                display: flex;
+                gap: 30px;
+            }
+
+        }
+
+        .div-footer {
+            position: static;
+            bottom: 0;
+            left: 0;
+            height: auto;
+            color: #FFFFFF;
+
+            .top-footer {
+                background-color: #233E8B;
+                padding: 50px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+
+                img {
+                    width: 50%;
+                    height: auto;
+                }
+
+                .footer-1 {
+                    text-align: center;
+                }
+
+                .footer-2 {
+                    padding: 0px 100px;
+
+                    h2 {
+                        color: #FEDC5A;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .colfooter {
+                flex: 1;
+            }
+
+            .bottom-footer {
+                padding: 20px 100px;
+                background-color: #22222D;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        .btn-yellow {
+            padding: 15px;
+            background-color: #FFDD00;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .col-flex-1 {
+            flex: 1;
+        }
+
+        .reboot-your-career {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+            margin: 30px 0px;
+            gap: 50px;
+            padding: 0px 50px;
+
+            .left-ryc-content>p:nth-last-child(2) {
+                font-weight: bold;
+            }
+
+            .left-ryc {
+                h1 {
+                    margin-bottom: 0px;
+                }
+
+                .left-ryc-content {
+                    align-content: center;
+                }
+            }
+
+            .right-ryc {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div-full">
+        <div class="page-header-panel">
+            <header>
+                <img src="pledge2propel_source/image/plege2propelLogo.svg" alt="PLEDGE2PROPEL">
+                <nav>
+                    <a href="javascript:void(0)">Become a Mentor ></a>
+                    <a href="javascript:void(0)">Partner with us ></a>
+                </nav>
+            </header>
+            <div class="home-content">
+                <div class="center-content">
+                    <p class="title-content"><span>The end of one journey</span><span> gives you the power to
+                        </span><span>start
+                            a greater one</span></p>
+                    <div class="title-desc">
+                        <p>Pledge2Propel is on a mission to help technology professionals who've lost their jobs find
+                            new
+                            opportunities for growth and success.
+                        </p>
+                        <p>After all, adversity is just an opportunity to rise again, more intelligently and with
+                            renewed
+                            purpose.</p>
+
+                        <p>Our goal is to empower you with all the resources you need, because with the right guidance
+                            there
+                            is
+                            no limit to what you can achieve.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mid-letus">
+            <div clas="mid-tech-1">
+                <small>Let us </small>Pledge to Propel the Tech Community Pledge to Propel the Tech Community
+            </div>
+            <div clas="mid-tech-2">
+                <small>our mantra is</small>Empathise, Inspire, Empower
+            </div>
+        </div>
+    </div>
+    <div class="partner-with-pledge2propel">
+        <div class="div-pwp-row-1">
+            Partner with <span class="pwp-span-navy">Pledge<span class="pwp-span-green">2</span>Propel</span>
+        </div>
+        <div class="div-pwp-row-2">
+            <div class="div-pwp-col">
+                <div class="col-flex-1 div-pwp-col-1">
+
+                    <h3>Give someone a fish and you feed them for a day; teach them to fish and you feed them for a
+                        lifetime.</h3>
+                    <p>If you resonate with our mission, we’d love to partner with you! Help us make a positive impact
+                        in not only the tech community but in the overall economy.</p>
+
+                    <p>As a partner, you'll help talented individuals who are at the crossroads of their career. Be it
+                        propelling their careers or entrepreneurial journeys, you can make a significant positive
+                        impact.</p>
+
+                    <p><strong>Technology Mentorship, Training Infrastructure, Incubation services</strong> are some of
+                        the areas through which your company can contribute. There can be many more ways in which you
+                        can offer to help. </p>
+                </div>
+                <div class="col-flex-1 div-pwp-col-2">
+                    <img src="pledge2propel_source/image/Mask group.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="our-partners">
+
+        <h2>Our Partners</h2>
+        <div class="op-center">
+            <img src="pledge2propel_source/image/ourpartners-grp-130.svg" alt="Ideas2IT">
+            <img src="pledge2propel_source/image/ourpartners-grp-128.svg" alt="IdeaRX">
+            <img src="pledge2propel_source/image/ourpartners-grp-129.svg" alt="WellM">
+        </div>
+        <p class="btn-yellow btn-partnerwithus">Partner With Us</p>
+    </div>
+    <div class="reboot-your-career">
+        <div class="col-flex-1 left-ryc">
+            <h1>Reboot your career</h1>
+            <div class="left-ryc-content">
+                <p>We're proud to be a part of the tech community; to have benefited from the brilliant
+                    contributions of thousands of tech professionals like you.</p>
+
+                <p>That's why we're committed to giving back by providing high-quality, affordable training
+                    resources.</p>
+
+                <p>Tell us what you need, along with your contact details and we can guide you on your new journey.
+                </p>
+
+                <p class="btn-yellow btn-letushelp">Let us help you</p>
+            </div>
+
+        </div>
+        <div class="col-flex-1 right-ryc">
+            <img src="pledge2propel_source/image/smiling-people-2021-08-26-18-51-39-utc 1.svg"
+                alt="smiling-people-2021-1">
+            <img src="pledge2propel_source/image/smiling-people-2021-08-26-18-51-39-utc 2.svg"
+                alt="smiling-people-2021-2">
+        </div>
+    </div>
+    <div class="div-footer">
+        <div class="top-footer">
+            <div class="colfooter footer-1">
+                <img src="pledge2propel_source/image/Group_footerdisplay.svg" alt="Pledge2Propel">
+            </div>
+            <div class="colfooter footer-2">
+                <h2>Our Mission Statement</h2>
+                <span class="font-14-size">At Pledge2Propel, we value the tech community and the contributions of its
+                    talented professionals
+                    to the world economy. ‘Pledge2Propel’ is our way of giving back, by helping tech professionals
+                    who've lost their jobs find new opportunities for growth and success.</span>
+                <h3 style="padding: 10px 0px;">Our Mantra is Empathise, Inspire, Empower.</h3>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <small>Copyright &copy; Pledge2Propel | All Rights Reserved</small>
+            <small>Privacy Policy | Terms of Use</small>
+        </div>
+    </div>
+
+</body>
+
+</html>
