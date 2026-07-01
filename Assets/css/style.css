@@ -272,6 +272,40 @@ header {
 
   .right-ryc {
     text-align: center;
-    
+  }
+}
+
+.meet-the-mentors {
+  padding: 20px 50px 50px;
+  background-color: #edf6ff;
+  text-align: center;
+  margin-bottom: 40px;  
+
+  .employee-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .employee {
+    text-align: center;
+    padding: 0 30px;
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 0px;
+    }
+    .circle {
+      width: 169px;
+      height: 169px;
+      background-color: #233e8b;
+      border-radius: 50%;
+      img {
+        border-radius: 48%;
+        margin-top: 9px;
+      }
+    }
   }
 }
