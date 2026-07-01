@@ -1,0 +1,50 @@
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .div-full {
+    width: 90%;
+  }
+  .home-content {
+    .center-content {
+      width: 90%;
+      padding: 20px 10px;
+    }
+    .title-content {
+      width: 100%;
+      height: auto;
+      font-size: 28px;
+      line-height: 36px;
+      margin: 0 0 20px;
+    }
+  }
+  .partner-with-pledge2propel {
+    width: 90%;
+  }
+  .our-partners {
+    width: 90%;
+
+    .op-center {
+      margin: 20px 0px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+  }
+  .reboot-your-career {
+    width: 90%;
+    .right-ryc {
+      img {
+        height: 383px;
+      }
+      img:last-child {
+        width: 68%;
+      }
+      img:first-child {
+        width: 23%;
+      }
+    }
+  }
+}

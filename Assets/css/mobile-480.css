@@ -5,8 +5,7 @@
   }
 
   .div-full {
-    padding: 0 15px;
-    background-size: cover;
+    padding: 0 15px;    
   }
 
   .page-header-panel {
@@ -37,7 +36,6 @@
 
   .home-content {
     width: 100%;
-    border: none;
     .center-content {
       width: 100%;
       padding: 20px 10px;
