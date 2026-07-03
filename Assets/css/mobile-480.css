@@ -5,7 +5,7 @@
   }
 
   .div-full {
-    padding: 0 15px;    
+    padding: 0 15px;
   }
 
   .page-header-panel {
@@ -101,6 +101,9 @@
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+    p{
+      margin-top: 5px;
+    }
   }
 
   .reboot-your-career {
@@ -143,6 +146,159 @@
       gap: 10px;
       padding: 20px;
       text-align: center;
+    }
+  }
+
+  .panel-tech-upskilling {
+    width: calc(100% - 60px);
+    height: auto;
+    margin: 20px 15px 100px;
+    padding: 20px 15px 30px;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  .panel-tech-upskilling .panel-header-title {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0;
+    background: transparent;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .tech-upskilling-data {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .tech-upskilling-data .div-content {
+    padding: 0;
+  }
+
+  .tech-upskilling-data .upskill-nav {
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
+    padding: 10px 0 20px;
+  }
+
+  .tech-upskilling-data .upskill-nav .upskill-nav-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .tech-upskilling-data .div-display-center {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .tech-upskilling-data .div-display-center .dd-content,
+  .tech-upskilling-data .div-display-center .dd-image {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+
+  .tech-upskilling-data .div-display-center .dd-content {
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 1.6;
+  }
+
+  .tech-upskilling-data .div-display-center .dd-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tech-upskilling-data .div-display-center .dd-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .tech-upskilling-data .div-display-bottom {
+    margin-top: 10px;
+  }
+
+  .tech-upskilling-data .div-display-bottom h3 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .tech-upskilling-data .div-skillset-list {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .tech-upskilling-data .div-skillset-common {
+    height: auto;
+    min-height: 120px;
+    width: 150px;
+  }
+
+  .tech-upskilling-data .div-skillset-common .tech-image {
+    padding: 20px;
+  }
+
+  .tech-upskilling-data .div-skillset-common img {
+    max-width: 55px;
+    height: auto;
+  }
+
+  .panel-tech-footer {
+    position: static;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .panel-tech-footer .panel-footer-1,
+  .panel-tech-footer .panel-footer-2 {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box;
+    overflow: scroll;
+  }
+
+  .panel-tech-footer .panel-footer-1 {
+    padding: 5px;
+  }
+
+  .panel-tech-footer .panel-footer-2 {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .panel-tech-footer .panel-footer-1 h2 {
+    font-size: 18px;
+  }
+
+  .btn-yellow {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+  }
+  .panel-tech-upskilling {
+    .panel-tech-footer {
+      margin: 0px 10px;
+      bottom: -120px;
+      gap: 20px;
     }
   }
 }

@@ -47,4 +47,34 @@
       }
     }
   }
+  .panel-tech-upskilling {
+    height:1100px;
+    .panel-tech-footer{
+      margin: 0px 40px;
+      .panel-footer-2{
+      padding: 10px;
+      overflow: auto;
+    }
+    }
+    .panel-header-title {
+      margin: 0px 42px;
+    }
+    
+    .tech-upskilling-data {
+      & .upskill-nav {
+        .upskill-nav-link {
+          padding: 0px;
+          font-size: 14px;
+        }
+      }
+      .div-display-center {
+        margin: 0px;
+        .dd-content {
+          margin-right: 0px;
+          overflow: auto;
+          text-align: justify;
+        }
+      }
+    }
+  }
 }
