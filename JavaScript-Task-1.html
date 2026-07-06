@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Java Script task</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="faq-main m-20">
+        <div class="border-0 p-5 qa-1 question">
+            <div class="bg-[#EDF6FF] flex flex-row font-bold justify-between py-2 ques ques-1 cursor-pointer"
+                onclick="toggle('div-qa-1')">
+                <div>What does "lifetime access" mean exactly?</div>
+                <button id="btn-qa-1">+</button>
+            </div>
+            <div class="div-qa-ans div-qa-1 hidden">Tailwind Plus products are a one-time purchase, with no recurring
+                subscription.
+                When you purchase any Tailwind Plus product, you have access to all of the content in that product
+                forever.</div>
+        </div>
+        <div class="border-0 p-5 question qa-2">
+            <div class="bg-[#EDF6FF] flex flex-row font-bold justify-between py-2 ques ques-2 cursor-pointer"
+                onclick="toggle('div-qa-2')">
+                <div>What does "lifetime access" mean exactly?</div>
+                <button id="btn-qa-2">+</button>
+            </div>
+            <div class="div-qa-ans div-qa-2 hidden">Tailwind Plus products are a one-time purchase, with no recurring
+                subscription.
+                When you purchase any Tailwind Plus product, you have access to all of the content in that product
+                forever.</div>
+        </div>
+    </div>
+</body>
+<script>
+    function toggle(divName) {
+        var allItems = document.getElementsByClassName('div-qa-ans');
+        for (let i = 0; i < allItems.length; i++) {
+             allItems[i].classList.add('hidden')            
+        }
+
+        var divItem = (document.getElementsByClassName(divName)[0]).classList;
+        
+        if (divItem.contains('hidden')) {
+            divItem.remove('hidden');
+            divItem.add('show')
+        }
+        else {
+            divItem.remove('show');
+            divItem.add('hidden')
+        }
+    }
+</script>
+
+</html>
