@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Java Script task</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .btn-test {
+            border: 1px solid gray;
+            background-color: #7e4646;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn-test" onclick="testFunction()">Click to Run function</button>
+</body>
+<script>
+    function testFunction() {
+        var store_hours = {
+            "thu": {
+                "close": "10:30 PM",
+                "open": "08:00 AM",
+            },
+            "tue": {
+                "close": "08:15 PM",
+                "open": "11:45 AM",
+            },
+            "wed": {
+                "close": "11:45 PM",
+                "open": "09:45 AM",
+            },
+            "sat": {
+                "close": "11:00 PM",
+                "open": "09:30 AM",
+            },
+            "fri": {
+                "close": "11:59 PM",
+                "open": "02:00 AM",
+            },
+            "mon": {
+                "close": "08:00 PM",
+                "open": "02:00 AM",
+            },
+            "sun": {
+                "close": "11:59 PM",
+                "open": "09:30 AM",
+            }
+        }
+
+        var response = Object.entries(store_hours).map(t => ({ Title: t[0], Value: t[1], rno: orderId(t[0]) })).sort((a,b) => (a.rno - b.rno));
+        console.log(response);
+
+        function orderId(key) {
+            let WeekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            var currentDate = new Date()
+            //currentDate.setDate(currentDate.getDate()+1);
+            var weekFirst = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
+            let firstIndex = WeekDays.findIndex(t => t.includes(weekFirst.toLocaleLowerCase()));
+
+            var fetch = WeekDays.findIndex(t => t.includes(key));
+            var returnvalue = fetch - firstIndex >=0 ? fetch-firstIndex : 7-(0-(fetch - firstIndex) );
+            //console.log('firstIndex ->' + firstIndex, 'fetch ->' + fetch, 'key-> '+key, 'returnvalue ->' + returnvalue);
+            return returnvalue;
+            /* Logical steps
+
+                        3-2 = 1 (thu) : 1
+                        1-2 = -1 (tue): -1 7-1: 6
+                        2-2 = 0 (wed) : 0
+                        5-2= 3 (satu) : 3
+                        4-2 = 2 (fri) : 2
+                        0-2 = -2 (mon) : 7-2 : 5
+                        6-2 = 4 (sun) : 4
+            */
+        }
+
+
+        //Object Creation 
+        var object = { name: "Sudheer", age: 34 };
+        var object_1 = new Object();
+        var object_2 = Object();
+        var object_3 = Object.create(null);
+        var object_4 = Object.create(object);
+        //console.log(object, object_1, object_2, object_3, object_4);
+
+        //Constructor for function
+        var fun_object = new User("User-1");
+        var fun_object_1 = User("User-2");
+
+        //console.log(fun_object,fun_object_1, User.prototype,User);
+
+        var userFunNewInstance = Object.create(User.prototype);
+        //console.log(userFunNewInstance);
+
+        var result = User.call(userFunNewInstance, 'Raja');
+        //console.log(result && typeof result === 'object' ? result : userFunNewInstance);
+
+        /* Shared method and properties using ProtoType*/
+        //console.log(fun_object.getUserDetails());
+        var item = fun_object.userAddress('MainStreet', 'Tamilnadu');
+        //console.log(fun_object.getUserDetails());
+
+
+        var empDetails = new User('Roja', 'Chennai', 23);
+        var empAddress = new User();
+        empAddress.userAddress('TNagar', 'Chennai');
+
+        var mergeEmp = Object.assign({}, empAddress, empDetails);     //First Address object replaced by employee details
+        // console.log(empDetails);
+        // console.log(empAddress);
+        // console.log(mergeEmp);
+
+        var person = new Person("Siva");
+
+        var employeeList = [new Employee(1, 'Raja', 'HR'),
+        new Employee(2, 'Rani', 'Finance'),
+        new Employee(3, 'Roja', 'IT'),
+        new Employee(4, 'Siva', 'Production'),
+        new Employee(5, 'Subha', 'HR'),
+        new Employee(6, 'Ravi', 'Finance'),
+        new Employee(7, 'Reena', 'IT'),
+        new Employee(8, 'Sudha', 'Production'),
+        ]
+
+        var mapItem = employeeList.map(t => t.ID + " / " + t.Name);
+        var findItem = employeeList.find(t => t.ID = 10);
+        var filterItem = employeeList.filter(t => t.ID > 6);
+        var createList = employeeList.slice(1, 2);
+
+        employeeList.splice(1, 0, new Employee(9, 'Radha', 'Finance'));
+        employeeList.push(new Employee(10, 'Ajay', 'HR'));
+        var sortItems = employeeList.sort(t => t.id);
+        //console.log(sortItems);
+
+        var popItem = employeeList.pop();
+
+
+        var NumberList = [1, 2, 3, 5, 6, 8];
+        //console.log(NumberList.includes(3));
+
+    }
+    function Employee(id, name, dept) {
+        this.Name = name;
+        this.ID = id;
+        this.Dept = dept;
+    }
+    function User(name, city, age = 21) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+    }
+
+    User.prototype.name = "UserMaster";
+    User.prototype.getUserDetails = function () {
+        return ((this.name ?? "-") + " / " + (this.age ?? "-") + " / " + (this.city ?? "-") + " / " + (this.street ?? "--") + " / " + (this.state ?? "---"));
+    }
+    User.prototype.userAddress = function (street, state) {
+        this.street = street;
+        this.state = state;
+    }
+
+    class Person {
+        constructor(name) {
+            this.UserName = name;
+        }
+    }
+
+
+
+
+</script>
+
+</html>
