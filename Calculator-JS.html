@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Calculator
+    </title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<body class="w-[100%] h-[100%] bg-[#e2d8f2]">
+    <div class="clac w-[410px] h-[426px] bg-[#DFF8DF] m-auto my-20">
+        <div class="calcinput">            
+            <input type="text" id="txt-calc" class="txtcalc bg-[#FFFFFF] m-2 w-98 h-8 text-right py-1 pl-1" value="0"
+                disabled="">
+        </div>
+        <div id="btns-calc" class="btns-calc flex flex-row flex-wrap m-1">            
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var buttonItems = ['%', 'CE', 'C', 'Back', '7', '8', '9', '%', '4', '5', '6', '*', '1', '2', '3', '-', '+/-', '0', '.', '+', '=', 'Enter'];
+    // const btn_list = buttonItems.map((t) => (
+    //     <button
+    //         key={t}
+    //         id={`btn-${t}`}
+    //         value={t}
+    //         onClick={calculate}
+    //         className="p-2 m-1 bg-[#e2d8f2] rounded-md font-[700] w-[92px] h-[48px]"
+    //     >
+    //         {t}
+    //     </button>
+    // ));
+    let number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    let symbol = ['+', '-', '/', '*', '=', 'Enter', 'C', 'Back'];
+    const btn_list = buttonItems.map((t) => {
+
+        let defaultClass = "p-2 m-1 bg-[#e2d8f2] rounded-md font-[700] h-[48px] ";
+        let addWidth = "w-[92px]";//t == "=" | t == "Enter" ? "w-[192px]" : "w-[92px]";
+
+        const button = document.createElement("button");
+        button.id = `btn-${t}`;
+        button.value = t;
+        button.textContent = t;
+
+        if (t == "=" | t == "Enter") {
+            addWidth = "w-[192px]";
+            button.addEventListener("click", calculate);
+        }
+        else if (t == "C") {
+            button.addEventListener("click", clearInput);
+        }
+        else if (t == "Back") {
+            button.addEventListener("click", Backspace);
+        }
+        else if (number.indexOf(t) >= 0 || symbol.indexOf(t) >= 0) {
+            button.addEventListener("click", appendValue);
+        }
+
+        if (number.indexOf(t) >= 0 || symbol.indexOf(t) >= 0) {
+            addWidth += " hover:bg-[#b895ef] cursor-pointer"
+        }
+
+        button.className = defaultClass + addWidth;
+
+        return button;
+    });
+
+
+    const container = document.getElementById("btns-calc");
+
+    btn_list.forEach((button) => {
+        container.appendChild(button);
+    });
+
+    function appendValue() {
+        let existingVal = document.getElementById("txt-calc").value;
+
+        if (Number(document.getElementById("txt-calc").value) == 0) {
+            document.getElementById("txt-calc").value = Number(this.value);
+        }
+        else {
+            document.getElementById("txt-calc").value += (number.indexOf(this.value) >= 0) ? Number(this.value) : this.value;
+        }
+    }
+
+    function clearInput() {
+        document.getElementById("txt-calc").value = "";
+    }
+
+    function Backspace() {
+        var inputValue = document.getElementById("txt-calc").value;
+        document.getElementById("txt-calc").value = inputValue.slice(0, inputValue.lengt - 2);
+    }
+
+    function calculate() {
+        var inputValue = document.getElementById("txt-calc").value;
+        document.getElementById("txt-calc").value = eval(inputValue);
+    }
+
+</script>
+
+</html>
