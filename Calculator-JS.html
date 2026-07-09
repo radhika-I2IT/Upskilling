@@ -19,7 +19,7 @@
     </div>
 </body>
 <script type="text/javascript">
-    var buttonItems = ['%', 'CE', 'C', 'Back', '7', '8', '9', '%', '4', '5', '6', '*', '1', '2', '3', '-', '+/-', '0', '.', '+', '=', 'Enter'];
+    var buttonItems = ['%', 'CE', 'C', 'Back', '7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '+/-', '0', '.', '+', '=', 'Enter'];
     // const btn_list = buttonItems.map((t) => (
     //     <button
     //         key={t}
@@ -85,17 +85,35 @@
     }
 
     function clearInput() {
-        document.getElementById("txt-calc").value = "";
+        document.getElementById("txt-calc").value = "0";
     }
 
     function Backspace() {
         var inputValue = document.getElementById("txt-calc").value;
-        document.getElementById("txt-calc").value = inputValue.slice(0, inputValue.lengt - 2);
+        document.getElementById("txt-calc").value = inputValue.slice(0, inputValue.length - 2);
     }
 
     function calculate() {
         var inputValue = document.getElementById("txt-calc").value;
-        document.getElementById("txt-calc").value = eval(inputValue);
+
+        let outputvalue = inputValue;
+        if(inputValue.indexOf('+')>0){
+            var numberArray = inputValue.split('+');
+            outputvalue = numberArray[0]+numberArray[1]
+        }
+         else if(inputValue.indexOf('-')>0){
+            var numberArray = inputValue.split('-');
+            outputvalue = numberArray[0]/numberArray[1]
+        }
+         else if(inputValue.indexOf('*')>0){
+            var numberArray = inputValue.split('-');
+            outputvalue = numberArray[0]*numberArray[1]
+        }
+         else if(inputValue.indexOf('/')>0){
+            var numberArray = inputValue.split('/');
+            outputvalue = numberArray==0 ?'Cannot divide by zero' : numberArray[0]/numberArray[1];
+        }
+        document.getElementById("txt-calc").value = outputvalue;
     }
 
 </script>
