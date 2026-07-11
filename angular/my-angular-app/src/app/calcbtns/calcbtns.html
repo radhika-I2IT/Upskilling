@@ -1,0 +1,4 @@
+<button id="btn-{{currentBtnValue}}" name="btn-nm-{{currentBtnValue}}" class="p-2 m-1 bg-[#e2d8f2] rounded-md font-[700] h-[48px] w-[92px] cursor-pointer 
+         hover:bg-[#b895ef] disabled:bg-[#c9c4c4] disabled:cursor-not-allowed"
+    [disabled]="disabledBtns?.includes(currentBtnValue)" [ngClass]="{'w-[192px]' : currentBtnValue == '=' || currentBtnValue == 'Enter'}"
+    (click)="sendValue()">{{currentBtnValue}}</button>

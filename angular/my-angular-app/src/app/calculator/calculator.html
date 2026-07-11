@@ -1,0 +1,12 @@
+<div class="flex items-center justify-center h-screen bg-[#e2d8f2]">
+  <div class="w-[420px] h-[420px] bg-[#dff8df] m-auto">
+    <p class="text-right w-[96%] h-6"><small id="sm-stack-value"
+      *ngIf="checkShowSmallValue()">{{this.calcInputArray?.initialValue??0}}</small></p>
+    <input class="bg-[#FFFFFF] w-[96%] h-6 text-right m-2 p-2" name="answer" [(ngModel)]="answer" />
+    <div class="flex flex-row flex-wrap m-2">
+      <app-calcbtns *ngFor="let btnValue of calcButtonList; let i = index" [currentBtnValue]="btnValue"
+        [calcInputArray]="calcInputArray" (calculateValue)="getChildValue($event)">
+      </app-calcbtns>
+    </div>
+  </div>
+</div>
