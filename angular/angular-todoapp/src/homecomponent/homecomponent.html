@@ -1,0 +1,75 @@
+<div class="flex h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-56 bg-sky-100 text-[#000080] p-5">
+
+    <h2 class="text-2xl font-bold mb-8">
+      Todos App
+    </h2>
+
+    <ul class="space-y-4">
+
+      <li>
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2 hover:bg-gray-700  hover:text-white cursor-pointer">
+          Dashboard
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/users"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2 hover:bg-gray-700  hover:text-white cursor-pointer">
+          Users
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/posts"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2 hover:bg-gray-700  hover:text-white cursor-pointer">
+          Posts
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/albums"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2  hover:bg-gray-700  hover:text-white cursor-pointer">
+          Albums
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/todos"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2  hover:bg-gray-700  hover:text-white cursor-pointer">
+          Todos
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/about"
+          routerLinkActive="bg-sky-200"
+          class="block rounded-md px-4 py-2  hover:bg-gray-700  hover:text-white cursor-pointer">
+          About
+        </a>
+      </li>
+
+    </ul>
+
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

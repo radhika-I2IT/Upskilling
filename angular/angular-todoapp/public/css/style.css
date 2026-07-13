@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.hover-home-primary {
+  @apply hover:bg-gray-700 hover:text-white;
+}

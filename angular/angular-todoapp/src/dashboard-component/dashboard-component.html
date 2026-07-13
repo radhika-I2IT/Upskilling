@@ -1,0 +1,12 @@
+<h2 class="font-bold text-2xl text-center p-2 my-4">
+    Dashboard
+</h2>
+<div class="flex flex-row flex-nowrap gap-10 p-2  justify-center content-center w-full h-40">
+    @for (item of displayList; track item.title) {
+        <div class="rounded-lg border-0 flex-1 text-center bg-gray-100 py-5 h-auto text-xl font-bold text-indigo-950">
+        <p>{{item.title}}</p>
+        <p class="bg-sky-200 flex w-16 h-16 items-center justify-center mx-auto text-base mt-2 rounded-full"> {{item.count}}
+        </p>
+    </div>
+    }
+</div>
