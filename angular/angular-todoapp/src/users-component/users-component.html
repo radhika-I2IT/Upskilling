@@ -1,1 +1,51 @@
-<p>user-component works!</p>
+<div><a routerlink="/" routerlinkactive="bg-sky-200" href="/" class="block cursor-pointer text-3x">🏠</a>
+    <div>
+        <h3 class="text-center ext-lg font-bold text-red-800 text-2xl">User Details</h3>
+        <div class="flex flex-row gap-2 w-200 my-4 mx-auto justify-center">
+            <p>Search : </p>
+            <input id="userName" [(ngModel)]="searchUserText" type="text" placeholder="Search user" maxlength="50"
+               (keydown)="userSearchKeyPress($event)" (keypress)="userSearchKeyPress($event)"
+                class="w-100 h-8 border border-blue-900 rounded-sm pl-2">
+            <!-- (keydown)="userSearchKeyPress($event)" (keypress)="userSearchKeyPress($event)"
+              (change)="userSearchOnChange($event)" (input)="search(this.searchUserText)" -->
+
+            <button
+                class="bg-blue-200 rounded-xl text-blue-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                [disabled]="searchUserText==null || searchUserText == undefined || searchUserText.length<3"
+                (click)="search(this.searchUserText)">Search</button>
+
+            <button
+                class="bg-red-200 rounded-xl text-red-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                [disabled]="searchUserText==null || searchUserText == undefined || searchUserText.length<=0"
+                (click)="clear()">Clear</button>
+        </div>
+        @if(userList != null && userList != undefined && userList.length>0)
+        {
+        <div class="flex flex-col gap-5 text-left m-auto w-210 mt-6 rounded-t-md bg-red-200 p-2">
+            <div class="flex w-200 gap-4">
+                <div class="flex-1 pl-2 font-bold">Name</div>
+                <div class="flex-1 pl-4 font-bold">Email</div>
+                <div class="flex-1 pl-4 font-bold">Company</div>
+                <div class="text-center font-bold">Action</div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-5 text-left m-auto w-210 rounded-b-md bg-red-100 px-2 py-4">
+            @for(item of userList; track item.id){
+            <div class="flex w-200 gap-4">
+                <div class="flex-1 pl-2">{{ item.name??'-' }}</div>
+                <div class="flex-1 pl-4">{{ item.email??'-' }}</div>
+                <div class="flex-1 pl-4">{{ item.company.name }}</div>
+                <div class="text-center"><a routerlink="/" routerlinkactive="bg-blue-500" href="/"
+                        class="block text-blue-800 cursor-pointer">View</a></div>
+            </div>
+            }
+        </div>
+        }
+        @else{
+        <div class="flex flex-col gap-5 text-left text-red-900 m-auto w-210 my-6 rounded-md bg-red-100 p-2">
+            User Not Found
+        </div>
+        }
+
+    </div>
+</div>

@@ -6,14 +6,21 @@ export interface UserModel {
   address: [];
   phone: string,
   website: string,
-  company: []
+  company: Company;
 }
 
+export interface Company
+{
+  name : string;
+  catchPhrase : string;
+  bs : string;
+}
 export interface PostModel {
   userId: number;
   id: number;
   title: string;
   body: string;
+  userDetail : UserModel | null | undefined
 }
 
 export interface TodosModel {
@@ -21,11 +28,13 @@ export interface TodosModel {
   id: number;
   title: string;
   completed: boolean;
+  userDetail : UserModel | null | undefined
 }
 
 
-export interface AlbmsModel {
+export interface AlbumsModel {
   userId: number;
   id: number;
   title: string;
+  userDetail : UserModel | null | undefined
 }

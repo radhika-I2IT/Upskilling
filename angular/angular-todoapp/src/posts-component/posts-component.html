@@ -1,1 +1,39 @@
-<p>post-component works!</p>
+<div><a routerlink="/" routerlinkactive="bg-sky-200" href="/" class="block cursor-pointer text-3x">🏠</a>
+    <div>
+        <h3 class="text-center ext-lg font-bold text-red-800 text-2xl">Posts Details</h3>
+        <div class="flex flex-row gap-2 w-200 my-4 mx-auto justify-center">
+            <p>Search : </p>
+            <input id="userName" [(ngModel)]="searchText" type="text" placeholder="Search Post" maxlength="50"
+                (keydown)="searchKeyPress($event)" (keypress)="searchKeyPress($event)"
+                class="w-100 h-8 border border-blue-900 rounded-sm pl-2">
+
+            <button
+                class="bg-blue-200 rounded-xl text-blue-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                [disabled]="searchText==null || searchText == undefined || searchText.length<3"
+                (click)="search(this.searchText)">Search</button>
+
+            <button
+                class="bg-red-200 rounded-xl text-red-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                [disabled]="searchText==null || searchText == undefined || searchText.length<=0"
+                (click)="clear()">Clear</button>
+        </div>
+        @if(postList != null && postList != undefined && postList.length>0)
+        {
+        <div class="flex flex-col flex-wrap gap-8 py-4 justify-center">
+            @for (item of postList; track item.title) {
+            <div class="rounded-lg border-0 flex-1 bg-blue-100 py-5 px-10 mx-auto w-200 cursor-pointer">
+                <div class="text-center font-bold text-red-900 pb-4">{{item.title}}</div>
+                <p>{{item.body}}</p>
+                <p  class="text-right font-bold text-blue-900 pt-4">Posted By: {{item.userDetail?.name??"-"}}</p>
+            </div>
+            }
+        </div>
+        }
+        @else{
+        <div class="flex flex-col gap-5 text-left text-red-900 m-auto w-210 my-6 rounded-md bg-red-100 p-2">
+            Post Not Found
+        </div>
+        }
+
+    </div>
+</div>

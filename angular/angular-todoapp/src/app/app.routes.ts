@@ -6,6 +6,7 @@ import { PostsComponent } from "../posts-component/posts-component";
 import { TodosComponent } from "../todos-component/todos-component";
 import { UsersComponent } from "../users-component/users-component";
 import { HomeComponent } from "../homecomponent/homecomponent";
+import { PostbyId } from "../postby-id/postby-id";
 
 export const routes: Routes = [
   {
@@ -18,7 +19,8 @@ export const routes: Routes = [
         { path: 'posts', component: PostsComponent },
         { path: 'albums', component: AlbumsComponent },
         { path: 'todos', component: TodosComponent },
-        { path: 'about', component: AboutComponent }
+        { path: 'about', component: AboutComponent },
+        { path: 'post/:id',component: PostbyId}
       ]
   }
 ];

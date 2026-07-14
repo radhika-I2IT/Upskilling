@@ -1,1 +1,64 @@
-<p>todos-component works!</p>
+<div><a routerlink="/" routerlinkactive="bg-sky-200" href="/" class="block cursor-pointer text-3x">🏠</a>
+    <div>
+        <h3 class="text-center ext-lg font-bold text-red-800 text-2xl">Todos</h3>
+        <div class="flex flex-row gap-2 w-200 my-4 mx-auto justify-center">
+            <p>Search : </p>
+            <input id="userName" [(ngModel)]="searchText" type="text" placeholder="Search Todos" maxlength="50"
+                (keydown)="searchKeyPress($event)" (keypress)="searchKeyPress($event)"
+                class="w-100 h-8 border border-blue-900 rounded-sm pl-2">
+
+            <button
+                class="bg-blue-200 rounded-xl text-blue-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                [disabled]="searchText==null || searchText == undefined || searchText.length<3"
+                (click)="search(this.searchText)">Search</button>
+
+            <button
+                class="bg-red-200 rounded-xl text-red-800 cursor-pointer w-20 disabled:bg-gray-200 disabled:text-gray-400"
+                (click)="clear()">Clear</button>
+        </div>
+        <div class="text-center">
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer" [(ngModel)]="status" (change)="toggleStatus()">
+
+                <div class="relative w-11 h-6 bg-red-400 rounded-full
+           peer-checked:bg-green-500
+           transition-colors duration-300
+           after:content-['']
+           after:absolute
+           after:top-0.5
+           after:left-0.5
+           after:w-5
+           after:h-5
+           after:bg-white
+           after:rounded-full
+           after:transition-transform
+           after:duration-300
+           peer-checked:after:translate-x-5">
+                </div>
+
+                <span class="ml-3 text-sm font-medium">
+                    {{ status ? 'Completed' : 'Pending' }}
+                </span>
+            </label>
+        </div>
+        @if(todosList != null && todosList != undefined && todosList.length>0)
+        {
+        <div class="flex flex-col flex-wrap gap-8 py-4 justify-center">
+            @for (item of todosList; track item.id) {
+            <div class="rounded-lg border-0 flex-1 bg-blue-100 py-5 px-10 mx-auto w-200 cursor-pointer"
+                [ngClass]="item.completed ? 'bg-green-100' : 'bg-red-100'">
+                <div class="text-left pb-2" [ngClass]="item.completed ? 'text-red-700': 'text-red-900'">{{item.title}}
+                </div>
+                <p class="text-left text-blue-900 pt-2">Author : {{item.userDetail?.name??"-"}}</p>
+            </div>
+            }
+        </div>
+        }
+        @else{
+        <div class="flex flex-col gap-5 text-left text-red-900 m-auto w-210 my-6 rounded-md bg-red-100 p-2">
+            Todos Not Found
+        </div>
+        }
+
+    </div>
+</div>
