@@ -1,11 +1,11 @@
-<h2 class="font-bold text-2xl text-center p-2 my-4 text-blue-900">
+<h2 class="font-bold text-2xl text-center p-2 text-blue-900">
     Dashboard
 </h2>
 <div class="flex flex-row flex-nowrap gap-10 p-2  justify-center content-center w-full h-40">
     @for (item of displayList; track item.title) {
     <div class="rounded-lg border-0 flex-1 text-center bg-mist-100 py-5 h-auto text-xl font-bold text-indigo-950">
         <p>{{item.title}}</p>
-        <p class="bg-sky-200 flex w-16 h-16 items-center justify-center mx-auto text-base mt-2 rounded-full">
+        <p class="bg-blue-200 flex w-16 h-16 items-center justify-center mx-auto text-base mt-2 rounded-full">
             {{item.count}}
         </p>
     </div>
@@ -14,13 +14,12 @@
 <div class="recent-post-list mt-6">
     <h3 class="text-lg font-bold text-blue-900">Recent Post</h3>
     @for (item of this.recentTopPosts; track item.id) {
-    <div class="flex flex-row justify-around bg-sky-100  rounded-md my-3 py-4">
+    <div class="flex flex-row justify-around bg-blue-100  rounded-md my-3 py-4">
         <div class="truncate w-210">{{item.title}}</div>
          <a
-          [routerLink]="['/post',item.id]"
-          class="block cursor-pointer text-sm text-blue-600 hover:text-blue-800 visited:text-purple-600"
-          >
-          View>>
+          [routerLink]="['/post',item.id]" routerlinkactive="bg-blue-500"
+          class="block cursor-pointer text-sm text-blue-800" title="View"
+          > View
         </a>
     </div>
     }
