@@ -43,9 +43,9 @@
             <div class="flex-1 pl-2">{{ item.name??'-' }}</div>
             <div class="flex-1 pl-4">{{ item.email??'-' }}</div>
             <div class="flex-1 pl-4">{{ item.company.name }}</div>
-            <div class="text-center"> 
-                <a routerlinkactive="bg-blue-500"
-                    class="block text-blue-800 cursor-pointer" (click)="viewUserDetail(item.id)">View</a>
+            <div class="text-center">
+                <a routerlinkactive="bg-blue-500" class="block text-blue-800 cursor-pointer"
+                    (click)="viewUserDetail(item.id)">View</a>
             </div>
             <!-- [routerLink]="['/users',item.id]"  -->
         </div>
@@ -59,3 +59,14 @@
     }
 
 </div>
+
+
+<app-app-dialog-component class="m-auto" #dialog>
+    <!-- <app-user-detail-byid [userId]="selectedUserId" class="w-500 h-500"
+  (close)="closeDetails()"></app-user-detail-byid> -->
+
+    <app-user-detail-byid *ngIf="isDetailOpen" [userId]="selectedUserId" (close)="isDetailOpen = false">
+    </app-user-detail-byid>
+
+</app-app-dialog-component>
+

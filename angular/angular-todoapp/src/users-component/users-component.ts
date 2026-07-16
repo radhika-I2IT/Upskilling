@@ -5,22 +5,31 @@ import { UserModel } from '../app/app.models';
 import { ActivatedRoute, RouterLinkActive, RouterModule } from '@angular/router';
 import { DataService } from '../service/data-service';
 import { TodoApiService } from '../service/todo-api-service';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+// import { MatDialog, MatDialogModule } from '@angular/material/dialog'; MatDialogModule , private dialog: MatDialog
 import { UserDetailByid } from '../user-detail-byid/user-detail-byid';
+import { ViewChild } from '@angular/core';
+import { AppDialogComponent } from '../app/app-dialog-component/app-dialog-component';
 
 @Component({
   selector: 'app-user-component',
-  imports: [CommonModule, FormsModule, RouterModule, RouterLinkActive, MatDialogModule],
+  imports: [CommonModule, FormsModule, RouterModule, RouterLinkActive,AppDialogComponent, UserDetailByid ],
   templateUrl: './users-component.html',
   styleUrl: './users-component.css',
+  standalone: true
 })
 export class UsersComponent implements OnInit {
   userList: UserModel[] = [];
   searchUserText: string = "";
+  selectedUserId: number = 0;
+  isDetailOpen : boolean = false;
+
+
+@ViewChild('dialog') dialog!: AppDialogComponent;
+
   constructor(private route: ActivatedRoute,
     private apiService: TodoApiService,
     private dataService: DataService,
-    private cdr: ChangeDetectorRef, private dialog: MatDialog) { }
+    private cdr: ChangeDetectorRef) { }
 
   postUserDetail: UserModel | undefined | null = null;
   ngOnInit(): void {
@@ -71,13 +80,20 @@ export class UsersComponent implements OnInit {
     this.userList = this.dataService?.usersData.sort((a, b) => b.id - a.id).slice(0, 5) ?? [];
   }
   viewUserDetail(userId: number) {
-    this.dialog.open(UserDetailByid, {
-      width: '500px',
-      height: '600px',
-      maxWidth: '600px',
-      maxHeight: '600px',
-      data: userId,
-      disableClose: true
-    });
+    this.selectedUserId = userId;
+    this.isDetailOpen = true;
+     this.dialog.open();
+    // this.dialog.open(UserDetailByid, {
+    //   width: '500px',
+    //   height: '600px',
+    //   maxWidth: '600px',
+    //   maxHeight: '600px',
+    //   data: userId,
+    //   disableClose: true
+    // });
   }
+
+  closeDetails() {
+  this.isDetailOpen = false;
+}
 }

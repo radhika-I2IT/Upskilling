@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { DataService } from '../service/data-service';
 import { TodoApiService } from '../service/todo-api-service';
 import { forkJoin } from 'rxjs';
@@ -10,11 +10,16 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 
 @Component({
   selector: 'app-user-detail-byid',
-  imports: [FormsModule, CommonModule, MatDialogModule],
+  standalone: true,
+  imports: [FormsModule, CommonModule],
   templateUrl: './user-detail-byid.html',
   styleUrl: './user-detail-byid.css',
 })
 export class UserDetailByid implements OnInit {
+   @Input() userId : number = 0;
+   @Output() close = new EventEmitter<void>();
+
+    // userId = input<number>();
   userData: UserModel | null | undefined
   display_postList: PostModel[] = [];
   display_albumsList: AlbumsModel[] = [];
@@ -25,13 +30,14 @@ export class UserDetailByid implements OnInit {
   postList: PostModel[] = [];
   albumsList: AlbumsModel[] = [];
   todosList: TodosModel[] = [];
-  //userId: number = 0;
 
   constructor(private apiService: TodoApiService,
     private dataService: DataService,
     private cdr: ChangeDetectorRef,
-    private route: ActivatedRoute, private dialog: MatDialogRef<UserDetailByid>,
-    @Inject(MAT_DIALOG_DATA) public userId: number) { }
+    private route: ActivatedRoute)
+    // , private dialog: MatDialogRef<UserDetailByid>,
+    // @Inject(MAT_DIALOG_DATA) public userId: number
+     { }
 
   ngOnInit(): void {
     // this.route?.paramMap?.subscribe(params => {
@@ -65,5 +71,14 @@ export class UserDetailByid implements OnInit {
       }
     })
   }
-  close() { this.dialog.close(); }
+
+  
+
+closeComponent() {
+  this.close.emit();
+}
+
+  // close() {    
+  //   this.dialog.close();
+  //  }
 }

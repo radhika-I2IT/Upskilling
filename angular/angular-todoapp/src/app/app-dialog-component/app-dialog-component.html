@@ -1,0 +1,10 @@
+<dialog #dialog class="w-full max-w-md rounded-xl p-0 shadow-2xl m-auto backdrop:bg-black/50">
+  <div class="mt-2 mr-2 flex justify-end">
+    <button class="p-2 hover:bg-gray-100" (click)="close()">
+      ✖️
+    </button>
+  </div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</dialog>
