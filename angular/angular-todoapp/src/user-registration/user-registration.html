@@ -1,0 +1,154 @@
+<div class="flex items-center w-full mb-6">
+    <div class="w-12">
+        <a href="/" class="cursor-pointer text-3xl">🔙</a>
+    </div>
+    <div class="flex-1 text-center text-2xl font-bold text-red-800">
+        Users Registration
+    </div>
+</div>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-col w-full max-w-3xl mx-auto px-4">
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">Full Name</label>
+            <div class="flex-1 w-[50%]">
+                <input type="text" class="border rounded-md p-2 w-full" formControlName="fullName"
+                    placeholder="Enter Full Name" maxlength="50" />
+                @if(registrationForm.get('fullName')?.touched &&
+                registrationForm.get('fullName')?.hasError('required')){
+                <small class="text-red-500">
+                    Full Name is required
+                </small>
+                }
+            </div>
+        </div>
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">
+                Date of Birth
+            </label>
+            <div class="flex-1 w-[50%]">
+                <input type="date" class="border rounded-md p-2 w-full" formControlName="dob" [min]="minDate"
+                    [max]="maxDate" />
+                @if(registrationForm.get('dob')?.touched &&
+                registrationForm.get('dob')?.hasError('required')){
+                <small class="text-red-500">
+                    Date of Birth is required
+                </small>
+                }
+            </div>
+        </div>
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">
+                Gender
+            </label>
+            <div class="flex-1 w-[50%]">
+                <select class="border rounded-md p-2 w-full" formControlName="gender">
+                    <option [ngValue]="null" disabled> --Select Gender-- </option>
+                    <option [ngValue]="Gender.Male">Male</option>
+                    <option [ngValue]="Gender.Female">Female</option>
+                    <option [ngValue]="Gender.Others">Others</option>
+                </select>
+                @if(registrationForm.get('gender')?.touched &&
+                registrationForm.get('gender')?.hasError('required')){
+                <small class="text-red-500">Please select gender</small>
+                }
+            </div>
+        </div>
+
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium"> Email ID </label>
+            <div class="flex-1 w-[50%]">
+                <input type="email" class="border rounded-md p-2 w-full" formControlName="emailId"
+                    placeholder="Enter Email-ID" />
+                @if(registrationForm.get('emailId')?.touched) {
+                @if( registrationForm.get('emailId')?.hasError('required')){
+                <small class="text-red-500">
+                    Email ID is required
+                </small>
+                }
+                @else if(registrationForm.get('emailId')?.hasError('pattern')){
+                <small class="text-red-500">
+                    Please enter valid email-id (ex.test@gmail.com)
+                </small>
+                }
+                }
+            </div>
+        </div>
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">Phone No.</label>
+            <div class="flex-1 w-[50%]">
+                <input type="text" class="border rounded-md p-2 w-full" formControlName="phoneNo"
+                    placeholder="Enter mobile no." maxlength="10" />
+                @if(registrationForm.get('phoneNo')?.touched)
+                {
+                @if(registrationForm.get('phoneNo')?.hasError('required')){
+                <small class="text-red-500">
+                    Phone number is required
+                </small>
+                }
+                @else if (registrationForm.get('phoneNo')?.hasError('pattern')){
+                <small class="text-red-500">
+                    Phone number must be a 10 digit numeric value
+                </small>
+                }
+                }
+            </div>
+        </div>
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">
+                Password
+            </label>
+            <div class="flex-1 w-[50%]">
+                <input type="password" class="border rounded-md p-2 w-full" formControlName="password"
+                    placeholder="Enter Password" maxlength="8" />
+                @if(registrationForm.get('password')?.touched){
+                @if(registrationForm.get('password')?.hasError('required')){
+                <small class="text-red-500">
+                    Password is required
+                </small>
+                }
+                @else if(registrationForm.get('password')?.hasError('minlength')){
+                <small class="text-red-500">
+                    Password must be at least 6 characters.
+                </small>
+                }
+                @else if(registrationForm.get('password')?.hasError('maxlength')){
+                <small class="text-red-500">
+                    Password maximum 8 characters only.
+                </small>
+                }
+                }
+            </div>
+        </div>
+        <div class="flex flex-row  items-start gap-3 my-2 p-2">
+            <label class="w-[30%] font-medium">Are you living in Chennai?</label>
+            <div class="flex gap-6 w-[50%]">
+                <label class="flex items-center gap-2">
+                    <input type="radio" formControlName="livinginChennai" [value]="true">Yes</label>
+                <label class="flex items-center gap-2">
+                    <input type="radio" formControlName="livinginChennai" [value]="false">No</label>
+            </div>
+        </div>
+        <div class="flex flex-col  items-start gap-3 my-2 p-2">
+            <label class="w-full font-medium">Terms & Condition</label>
+            <div class="w-full">
+                   @if(registrationForm.get('termsandcondition')?.touched &&
+                registrationForm.get('termsandcondition')?.hasError('requiredTrue')){
+                <small class="text-red-500">You must accept the Terms & Conditions.</small>
+                }
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" formControlName="termsandcondition">
+                    I agree to the Terms & Conditions and Privacy Policy
+                </label>             
+            </div>
+        </div>
+        <div class="flex justify-center mt-6 gap-10">
+            <button type="submit" class="bg-sky-900 text-white px-8 py-2 rounded-md hover:bg-blue-900 cursor-pointer">
+                Register
+            </button>
+            <div (click)="clearForm()" class="bg-red-900 text-white px-8 py-2 rounded-md hover:bg-red-500 cursor-pointer">
+                Clear
+            </div>
+        </div>
+    </div>
+</form>

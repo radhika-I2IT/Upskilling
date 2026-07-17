@@ -8,6 +8,7 @@ import { UsersComponent } from "../users-component/users-component";
 import { HomeComponent } from "../homecomponent/homecomponent";
 import { PostbyId } from "../postby-id/postby-id";
 import { UserDetailByid } from "../user-detail-byid/user-detail-byid";
+import { UserRegistration } from "../user-registration/user-registration";
 
 export const routes: Routes = [
   {
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'albums', component: AlbumsComponent },
       { path: 'todos', component: TodosComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'post/:id', component: PostbyId }
+      { path: 'post/:id', component: PostbyId },
+      { path: 'userregistration', component: UserRegistration }
     ]
   }
 ];

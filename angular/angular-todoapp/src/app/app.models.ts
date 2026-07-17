@@ -38,3 +38,26 @@ export interface AlbumsModel {
   title: string;
   userDetail : UserModel | null | undefined
 }
+
+export class UserRegistrationModel{
+  constructor(init?:Partial<UserRegistrationModel>)
+  {
+    Object.assign(this,init);
+  }
+  userID : number =0;
+  fullName : string ="";
+  dob: Date = new Date();
+  gender: Gender = Gender.Male;
+  emailId : string ="";
+  phoneNo : string = "";
+  password : string ="";
+  livinginChennai :  boolean = false;
+  termsandcondition: boolean = false;
+}
+
+export enum Gender
+{
+  Male = 1,
+  Female = 2,
+  Others = 3
+}
