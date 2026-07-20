@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { DataService } from '../service/data-service';
 import { TodoApiService } from '../service/todo-api-service';
 import { Gender, UserRegistrationModel } from '../app/app.models';
+import { emailDomainValidation } from '../app/app';
+import { UserIdGeneratorPipe } from '../app/user-id-generator-pipe';
 
 @Component({
   selector: 'app-user-registration',
@@ -26,7 +28,7 @@ export class UserRegistration implements OnInit {
       fullName: [this.user?.fullName ?? '', [Validators.required, Validators.maxLength(50)]],
       dob: [this.user?.dob ?? this.getCurrentDate(), [Validators.required]],
       gender: [this.user?.gender ?? Gender.Male, [Validators.required]],
-      emailId: [this.user?.emailId, [Validators.required, Validators.email]],// Validators.pattern(/^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/)]],
+      emailId: [this.user?.emailId, [Validators.required, Validators.email, emailDomainValidation()]],// Validators.pattern(/^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/)]],
       phoneNo: [this.user?.phoneNo, [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       password: [this.user?.password, [Validators.required, Validators.minLength(6), Validators.maxLength(8)]],
       livinginChennai: [this.user?.livinginChennai ?? false],
@@ -39,7 +41,7 @@ export class UserRegistration implements OnInit {
   }
 
   onSubmit() {
-    this.registrationForm.markAllAsTouched();
+    this.registrationForm.markAllAsTouched();   
     
     if (this.registrationForm.valid) {
       let value = this.registrationForm.value;

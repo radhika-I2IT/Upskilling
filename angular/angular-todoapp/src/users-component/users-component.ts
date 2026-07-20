@@ -9,10 +9,11 @@ import { TodoApiService } from '../service/todo-api-service';
 import { UserDetailByid } from '../user-detail-byid/user-detail-byid';
 import { ViewChild } from '@angular/core';
 import { AppDialogComponent } from '../app/app-dialog-component/app-dialog-component';
+import { UserIdGeneratorPipe } from '../app/user-id-generator-pipe';
 
 @Component({
   selector: 'app-user-component',
-  imports: [CommonModule, FormsModule, RouterModule, RouterLinkActive,AppDialogComponent, UserDetailByid ],
+  imports: [UserIdGeneratorPipe, CommonModule, FormsModule, RouterModule, RouterLinkActive,AppDialogComponent, UserDetailByid ],
   templateUrl: './users-component.html',
   styleUrl: './users-component.css',
   standalone: true

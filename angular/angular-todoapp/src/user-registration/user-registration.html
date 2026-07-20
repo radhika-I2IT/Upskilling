@@ -66,9 +66,14 @@
                     Email ID is required
                 </small>
                 }
-                @else if(registrationForm.get('emailId')?.hasError('pattern')){
+                @else if(registrationForm.get('emailId')?.hasError('pattern') || registrationForm.get('emailId')?.hasError('email')){
                 <small class="text-red-500">
                     Please enter valid email-id (ex.test@gmail.com)
+                </small>
+                }
+                 @else if(registrationForm.get('emailId')?.hasError('invalidEmail')){
+                <small class="text-red-500">
+                    {{ registrationForm.get('emailId')?.getError('invalidEmail')?.message }}
                 </small>
                 }
                 }
