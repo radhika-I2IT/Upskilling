@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, linkedSignal, OnInit, signal, Signal } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DataService } from '../service/data-service';
 import { TodoApiService } from '../service/todo-api-service';
@@ -21,9 +21,76 @@ export class UserRegistration implements OnInit {
   minDate: string = new Date(2001, 1, 1).toISOString().split('T')[0];
   maxDate: string = this.currentDate.toISOString().split('T')[0];
   Gender = Gender;
+  StatesandCity = [
+    {
+      name: "Tamil Nadu",
+      cities: [
+        "Chennai",
+        "Coimbatore",
+        "Madurai",
+        "Tiruchirappalli"
+      ]
+    },
+    {
+      name: "Kerala",
+      cities: [
+        "Kochi",
+        "Thiruvananthapuram",
+        "Kozhikode",
+        "Thrissur"
+      ]
+    },
+    {
+      name: "Karnataka",
+      cities: [
+        "Bengaluru",
+        "Mysuru",
+        "Mangaluru",
+        "Belagavi"
+      ]
+    }
+  ];
+  cityID = signal(0);
+  stateID = signal(0);
 
+  stateList = this.StatesandCity.map((value, index) => ({
+    id: index + 1,
+    state: value.name
+  }));
+
+  
+  citiesList = this.StatesandCity.flatMap(state => {
+    this.stateID.update(s => s + 1);
+
+    return state.cities.map(city => {
+      this.cityID.update(c => c + 1);
+
+      return {
+        id: this.cityID(),
+        city: city,
+        stateid: this.stateID()
+      };
+    });
+  });
+
+  selectedCity = signal(1);
+
+  selectedState = linkedSignal(() => {
+    const city = this.citiesList.find(
+      c => c.id === this.selectedCity()
+    );
+
+    return city?.stateid ?? null;
+  });
+
+  onStatechange(event:any){
+    console.log(this.stateList);
+    console.log(event)
+    this.selectedState.update(t=> Number(event.currentTarget.value.split(':')[0]));
+  }
 
   constructor(private fb: FormBuilder, private dataService: DataService, private apiService: TodoApiService) {
+    
     this.registrationForm = this.fb.group({
       fullName: [this.user?.fullName ?? '', [Validators.required, Validators.maxLength(50)]],
       dob: [this.user?.dob ?? this.getCurrentDate(), [Validators.required]],
@@ -41,8 +108,8 @@ export class UserRegistration implements OnInit {
   }
 
   onSubmit() {
-    this.registrationForm.markAllAsTouched();   
-    
+    this.registrationForm.markAllAsTouched();
+
     if (this.registrationForm.valid) {
       let value = this.registrationForm.value;
       value.userID = (this.dataService.userRegistration.length ?? 0) + 1;
@@ -64,7 +131,7 @@ export class UserRegistration implements OnInit {
 
       this.registrationForm.reset({
         fullName: this.user?.fullName,
-        dob: this.user?.dob ??this.getCurrentDate(),
+        dob: this.user?.dob ?? this.getCurrentDate(),
         gender: this.user?.gender ?? Gender.Female,
         emailId: this.user?.emailId,
         phoneNo: this.user?.phoneNo,
@@ -75,18 +142,18 @@ export class UserRegistration implements OnInit {
     }
   }
 
-  clearForm(){ 
+  clearForm() {
 
-     this.registrationForm.reset({
-        fullName: this.user?.fullName,
-        dob: this.user?.dob ??this.getCurrentDate(),
-        gender: this.user?.gender ?? Gender.Female,
-        emailId: this.user?.emailId,
-        phoneNo: this.user?.phoneNo,
-        password: this.user?.password,
-        livinginChennai: false,
-        termsandcondition: false
-      });
+    this.registrationForm.reset({
+      fullName: this.user?.fullName,
+      dob: this.user?.dob ?? this.getCurrentDate(),
+      gender: this.user?.gender ?? Gender.Female,
+      emailId: this.user?.emailId,
+      phoneNo: this.user?.phoneNo,
+      password: this.user?.password,
+      livinginChennai: false,
+      termsandcondition: false
+    });
   }
 
 

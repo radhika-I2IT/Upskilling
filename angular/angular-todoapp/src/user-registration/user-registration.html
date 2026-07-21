@@ -66,12 +66,13 @@
                     Email ID is required
                 </small>
                 }
-                @else if(registrationForm.get('emailId')?.hasError('pattern') || registrationForm.get('emailId')?.hasError('email')){
+                @else if(registrationForm.get('emailId')?.hasError('pattern') ||
+                registrationForm.get('emailId')?.hasError('email')){
                 <small class="text-red-500">
                     Please enter valid email-id (ex.test@gmail.com)
                 </small>
                 }
-                 @else if(registrationForm.get('emailId')?.hasError('invalidEmail')){
+                @else if(registrationForm.get('emailId')?.hasError('invalidEmail')){
                 <small class="text-red-500">
                     {{ registrationForm.get('emailId')?.getError('invalidEmail')?.message }}
                 </small>
@@ -137,23 +138,55 @@
         <div class="flex flex-col  items-start gap-3 my-2 p-2">
             <label class="w-full font-medium">Terms & Condition</label>
             <div class="w-full">
-                   @if(registrationForm.get('termsandcondition')?.touched &&
+                @if(registrationForm.get('termsandcondition')?.touched &&
                 registrationForm.get('termsandcondition')?.hasError('requiredTrue')){
                 <small class="text-red-500">You must accept the Terms & Conditions.</small>
                 }
                 <label class="flex items-center gap-2">
                     <input type="checkbox" formControlName="termsandcondition">
                     I agree to the Terms & Conditions and Privacy Policy
-                </label>             
+                </label>
             </div>
         </div>
         <div class="flex justify-center mt-6 gap-10">
             <button type="submit" class="bg-sky-900 text-white px-8 py-2 rounded-md hover:bg-blue-900 cursor-pointer">
                 Register
             </button>
-            <div (click)="clearForm()" class="bg-red-900 text-white px-8 py-2 rounded-md hover:bg-red-500 cursor-pointer">
+            <div (click)="clearForm()"
+                class="bg-red-900 text-white px-8 py-2 rounded-md hover:bg-red-500 cursor-pointer">
                 Clear
             </div>
         </div>
+
     </div>
 </form>
+
+<div class="flex flex-row  items-start gap-3 my-2 p-2">
+    <label class="w-[30%] font-medium">
+        City
+    </label>
+    <div class="flex-1 w-[50%]">
+        <select class="border rounded-md p-2 w-full" [(ngModel)]="selectedCity">
+            <option [ngValue]="0" disabled> --Select State-- </option>
+            @for(c of citiesList; track c.id)
+            {
+            <option [ngValue]="c.id">{{c.city}}</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="flex flex-row  items-start gap-3 my-2 p-2">
+    <label class="w-[30%] font-medium">
+        State
+    </label>
+    <div class="flex-1 w-[50%]">
+        <select class="border rounded-md p-2 w-full" [(ngModel)]="selectedState" (change)="onStatechange($event)">
+            <option [ngValue]="0" disabled> --Select State-- </option>
+            @for(s of stateList; track s.id)
+            {
+            <option [ngValue]="s.id">{{s.id}}-{{s.state}}</option>
+            }
+        </select>
+    </div>
+</div>
